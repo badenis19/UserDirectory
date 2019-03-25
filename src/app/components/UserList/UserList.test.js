@@ -4,12 +4,11 @@ import SystemUnderTest from './index'
 
 afterEach(cleanup)
 
-const setup = ({ props, render }) => {
+const setup = ({ users }) => {
 
-  const utils = render(<SystemUnderTest users={props} />);
+  const utils = render(<SystemUnderTest users={users} />)
 
   return {
-    props,
     ...utils,
   }
 }
@@ -17,13 +16,14 @@ const setup = ({ props, render }) => {
 const aUser = { email: 'm@a.com', password: 'pass@t' };
 
 it('will correctly render user item', async () => {
-  const { getByText } = setup({ render, props: [aUser] });
+  const { getByText } = setup({ users: [aUser] })
 
-  await waitForElement(() => getByText(/m@a.com/i));
+  await waitForElement(() => getByText(/m@a.com/i))
+  await waitForElement(() => getByText(/pass@t/i))
 })
 
 it('will correctly render multiple items', () => {
-  const { container } = setup({ render, props: [aUser, aUser] });
+  const { getAllByTestId } = setup({ users: [aUser, aUser] })
 
-  expect(container.querySelectorAll('li').length).toBe(2)
+  expect(getAllByTestId('user-item').length).toBe(2)
 })

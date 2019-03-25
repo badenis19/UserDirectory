@@ -18,15 +18,15 @@ export const placeHttpRequest = (url, method, body, fetch) => {
   return fetch(url, options)
     .then(response =>
       response.json().then(json => {
-        //const camelisedJson = humps.camelizeKeys(json || {});
+        //const camelisedJson = humps.camelizeKeys(json || {} )
 
         if (!response.ok) {
-          return Promise.reject(json);
+          return Promise.reject(json )
         }
 
         return json;
       })
-    );
+     )
 };
 
 export const GET = 'HTTP_GET';
@@ -48,24 +48,24 @@ export default fetch => store => next => action => {
       method = 'put';
       break;
     default:
-      return next(action);
+      return next(action )
   }
 
   const { url, success, body, failure } = action;
 
   if (typeof url !== 'string') {
-    throw new Error('Specify a string endpoint URL.');
+    throw new Error('Specify a string endpoint URL.' )
 
   }
 
   if (typeof success !== 'function') {
-    throw new Error('No success callback defined');
+    throw new Error('No success callback defined' )
   }
 
   if (typeof failure !== 'function') {
-    throw new Error('No failure callback defined');
+    throw new Error('No failure callback defined' )
   }
 
   return placeHttpRequest(url, method, body, fetch)
-    .then(success, failure);
+    .then(success, failure )
 };

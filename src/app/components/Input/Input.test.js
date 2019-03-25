@@ -5,10 +5,10 @@ import SystemUnderTest from './index'
 afterEach(cleanup)
 
 const SutWrapper = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("" )
   return (
     <SystemUnderTest value={value} onChange={setValue} label="test" type="text" id="123" saveForm={() => { }} />
-  );
+   )
 }
 
 const setup = () => {
@@ -23,7 +23,7 @@ const setup = () => {
   }
 }
 
-test('will correctly capture entry', () => {
+it('will correctly capture entry', () => {
   const { input } = setup()
 
   fireEvent.change(input, { target: { value: 'Abc' } })

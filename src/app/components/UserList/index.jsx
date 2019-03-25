@@ -26,7 +26,7 @@ const List = styled.ul`
 const UserList = ({ users }) => (
   <List>
     {users.map(({ email, password }, index) => (
-      <Item key={index}>
+      <Item data-testid="user-item" key={index}>
         <Heading>{email}</Heading>
         <p>{password}</p>
       </Item>

@@ -76,7 +76,12 @@ const Form = ({ heading, saveForm }) => {
         value={password}
         onChange={setPassword}
       />
-      <Button disabled={!isFormValid()} onClick={handleSaveForm} type="button">
+      <Button
+        data-testid="Save"
+        disabled={!isFormValid()}
+        onClick={handleSaveForm}
+        type="button"
+      >
         Save
       </Button>
     </Editor>

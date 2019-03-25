@@ -4,7 +4,7 @@ import { apiEndPoint } from 'config/apiConfig'
 import { placeHttpRequest } from 'util/httpRequest'
 import { resolveMessage } from 'util/resolveMessage'
 import { media } from 'ux/media'
-import GlobalStyle from './globalStyle'
+import GlobalStyle from 'ux/globalStyle'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Form from './components/Form'
@@ -49,7 +49,7 @@ const App = () => {
   const loadUsers = async (pageNumber = 1) => {
     const {
       payload: { users, page, hasPreviousPage, hasNextPage }
-    } = await placeHttpRequest(`${apiEndPoint}/users?page=${pageNumber}`, 'get', {}, fetch);
+    } = await placeHttpRequest(`${apiEndPoint}/users?page=${pageNumber}`, 'get', {}, fetch)
 
     setUsers(users)
     setPageNumber(page)

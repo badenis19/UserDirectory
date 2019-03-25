@@ -18,6 +18,7 @@ const Input = ({ onChange, label, type, id, value }) => (
     <label htmlFor={id}>{label}</label>
     <input
       aria-label="form-input"
+      data-testid={label}
       type={type}
       id={id}
       value={value}

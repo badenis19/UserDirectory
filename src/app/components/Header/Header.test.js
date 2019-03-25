@@ -6,15 +6,15 @@ afterEach(cleanup)
 
 const setup = ({ heading }) => {
 
-  const utils = render(<SystemUnderTest heading={heading} />);
+  const utils = render(<SystemUnderTest heading={heading} />)
 
   return {
     ...utils,
   }
 }
 
-test('will correctly render', async () => {
-  const { getByText } = setup({ heading: "Test heading" });
+it('will correctly render', async () => {
+  const { getByText } = setup({ heading: "Test heading" })
 
-  await waitForElement(() => getByText(/Test heading/i));
+  await waitForElement(() => getByText(/Test heading/i))
 })
