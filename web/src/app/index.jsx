@@ -47,9 +47,8 @@ const App = () => {
   const [currentHasNextPage, setHasNextPage] = useState(false)
 
   const loadUsers = async (pageNumber = 1) => {
-    const {
-      payload: { users, page, hasPreviousPage, hasNextPage }
-    } = await placeHttpRequest(`${apiEndPoint}/users?page=${pageNumber}`, 'get', {}, fetch)
+    const { users, page, hasPreviousPage, hasNextPage }
+    = await placeHttpRequest(`${apiEndPoint}/users?page=${pageNumber}`, 'get', {}, fetch)
 
     setUsers(users)
     setPageNumber(page)
@@ -74,7 +73,7 @@ const App = () => {
     loadUsers()
   }, [])
 
-
+  console.log(users);
   return (
     <Fragment>
       <GlobalStyle />
